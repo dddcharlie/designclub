@@ -4,7 +4,6 @@
 <head>
   <title>SAS Design Club</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -15,18 +14,17 @@
   	width:100%;
   	height:100px;
   	display:inline;
-    background-color:#39CCCC;
+    background-color:#607D8B;
   	text-align:center;
+    z-index:10;
   }
   .menu-left{
     display:inline-block;
     float:left;
-    position: absolute;
   }
   .login-right{
   	display:inline;
   	float:right;
-    position:absolute;
   }
   .logo-center{
     display:inline-block;
@@ -36,20 +34,105 @@
     margin-top:5px;
     height:80%;
   }
+  .login-button{
+  	padding:0px;
+  	display:inline-block;
+  	background:none;
+  	width:75px;
+  	height:50px;
+  	border:none;
+  	cursor: pointer;
+  	z-index:1000;
+    margin-right:15px;
+    margin-top:25px;
+  }
+  .menu-button{
+    padding:0px;
+  	display:inline-block;
+  	background:none;
+    border:none;
+    width:50px;
+    height:50px;
+    margin:25px;
+    cursor: pointer;
+    z-index:1000;
+  }
+  .main-page{
+    height:100%;
+    width:100%;
+    background-color:#37474F;
+  }
+  .bar1, .bar2, .bar3 {
+    width:35px;
+    height:5px;
+    margin-bottom:6px;
+    background-color:black;
+    transition: 1s;
+}
+  .change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+  }
+
+  .change .bar2 {opacity: 0;}
+
+  .change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+  }
+  .nav-menu{
+    position:fixed;
+    left:-1000px;
+    background-color:blue;
+    width:50%;
+    height:100%;
+    top:0;
+    bottom:0;
+  }
+  #menu_button{}
 </style>
 <body>
-  <!--Navigation-->
+  <!--Navigation Menu-->
+  <div class="nav-menu">
+  </div>
+  <!--Navigation Bar-->
   <div class="nav">
     <div class="menu-left">
-      <button type="button">Touch me!</button>
+      <button class="menu-button" id="menu_button" onclick="myFunction(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </button>
     </div>
     <div class="logo-center">
       <img class="nav-logo" src="img/nav_logo.png">
     </div>
     <div class="login-right">
-      <button type="button">Login</button>
+      <button type="button" class="login-button">Login</button>
     </div>
   </div>
-  <!--End Navigation-->
+  <!--End Navigation Bar-->
+
+  <!--Main Page-->
+  <div class="contain main-page">
+  </div>
+  <!--End Main Page-->
+
+  <!--Scripts-->
+
+  <script src="scripts/jquery-3.2.1.js"></script>
+  <script src="scripts/bootstrap.min.js"></script>
+  <script src="scripts/jq.js"></script>
+
+  <script>
+    function myFunction(x) {
+      x.classList.toggle("change");
+    }
+    $("#menu_button").click(function(){
+      console.log("clicked!");
+      $(".nav-menu").css('left','0px');
+    });
+  </script>
+  <!--End Scripts-->
 </body>
 </html>
